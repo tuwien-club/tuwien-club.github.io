@@ -1,3 +1,8 @@
+  .nav-logo{
+    width: 50px;
+  }
+
+
 #navbar-main {
     background: #006699;
 }
@@ -7,7 +12,7 @@
     border-radius: 5px;
 }
 
-.active {
+.navbar .active {
     background: #00537c;
 }
 
@@ -54,3 +59,7 @@ footer{
     transform: scale(1.1);
 }
 */
+
+.card-header a{
+    color: #006699;
+}
