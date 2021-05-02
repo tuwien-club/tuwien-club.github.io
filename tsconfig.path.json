@@ -5,7 +5,9 @@
         "@components/*": ["./src/components/*"],
         "@containers/*": ["./src/containers/*"],
         "@common/*": ["./src/common/*"],
-        "@store/*": ["./src/store/*"]
+        "@store/*": ["./src/store/*"],
+        "@API": ["./src/api"],
+        "@Types": ["./src/types"],
       }
     }
   }

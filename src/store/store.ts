@@ -5,39 +5,21 @@
  * Use of this source code is governed by an EUPL-1.2 license that can be found
  * in the LICENSE file at https://schett.net/license
  */
-import {
-  AnyAction,
-  Reducer,
-  applyMiddleware,
-  combineReducers,
-  createStore,
-  Store
-} from 'redux'
-import {composeWithDevTools} from 'redux-devtools-extension'
-import thunkMiddleware from 'redux-thunk'
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
 
-import {asyncCounterReducer} from './asyncCounter/asyncCounterReducer'
-import {counterReducer} from './counter/counterReducer'
-import {AppState} from './types'
+import {bifrostPageReducer} from './bifrostPage/bifrostPageReducer'
 
-const combinedReducers = combineReducers({
-  counter: counterReducer,
-  asyncCounter: asyncCounterReducer
+export const store = configureStore({
+  reducer: {
+    bifrostPage: bifrostPageReducer
+  },
+  middleware: getDefaultMiddleware({
+    thunk: {extraArgument: {}}
+  }),
+  devTools: process.env.NODE_ENV !== 'production'
 })
 
-const reducer: Reducer<AppState, AnyAction> = (state, action) => {
-  return combinedReducers(state, action)
-}
-
-/**
- * initStore
- * Initialise and export redux store
- */
-const initStore = (): Store => {
-  return createStore(
-    reducer,
-    composeWithDevTools(applyMiddleware(thunkMiddleware.withExtraArgument({})))
-  )
-}
-
-export const store = initStore()
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export interface RootState extends ReturnType<typeof store.getState> {}
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch
