@@ -7,7 +7,7 @@ interface Props {
   logoAlt?: string
 }
 
-export default ({
+const Navbar = ({
   logoUrl = 'https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.png',
   logoAlt = ''
 }: Props) => {
@@ -23,3 +23,5 @@ export default ({
     </>
   )
 }
+
+export default Navbar

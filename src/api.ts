@@ -1,11 +1,12 @@
 import {BifrostBridge} from 'bridge'
-import BridgeDrop from 'drop'
+import BridgeDrop, {references} from 'drop'
 
 BridgeDrop.bridge = new BifrostBridge({
   httpUrl: 'http://localhost:8000/graphql/'
 })
 
 // Session must be started after replacing the bridge
-BridgeDrop.bridge.session.begin()
+// await BridgeDrop.bridge.session.begin()
 
 export const DropAPI = BridgeDrop.buildIn
+export const DropAPIReferences: any = references

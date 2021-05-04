@@ -1,7 +1,10 @@
-@import url('../../node_modules/mdb-react-ui-kit/dist/css/mdb.min.css');
+@import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+@import 'draft-js/dist/Draft';
+@import '@draft-js-plugins/side-toolbar/lib/plugin.css';
 
 .App {
   text-align: center;
+  // margin: 500px;
 }
 
 .App-logo {

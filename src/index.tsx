@@ -2,14 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 
-import {store} from '@store/store'
+import {store, PersistGate, persistor} from '@store/store'
 
 import App from './pages/_app'
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </React.StrictMode>
   </Provider>,
 

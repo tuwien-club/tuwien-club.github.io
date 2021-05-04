@@ -5,3 +5,4 @@
 // export type PageNode = Omit<BifrostPage, 'children'> & {
 //   children?: PageNode[]
 // }
+export {}
