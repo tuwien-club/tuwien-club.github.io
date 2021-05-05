@@ -12,6 +12,8 @@ import {CMSTextField} from '@containers/CMSTextField'
 
 import {RootState} from '@store/store'
 
+import './index.scss'
+
 type CMSState = RootState['cms']
 
 interface Props extends CMSState {
@@ -27,6 +29,9 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
   }, [])
   const CMSPageId = `${id}_${name}`
   const pageContent = pages[CMSPageId].serverContent
+  console.log(pageContent)
+  console.log(pages)
+  console.log(name)
 
   return (
     <>
@@ -67,7 +72,7 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
             blockType: 'heading'
           }}
         />
-        <CMSTextField
+        {/* <CMSTextField
           content={pageContent.body[2].value}
           bifrostOptions={{
             pageId: '3',
@@ -77,7 +82,7 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
             blockPosition: 2,
             blockType: 'heading'
           }}
-        />
+        /> */}
         {/* <CMSTextField
           bifrostOptions={{
             pageId: '3',
@@ -89,7 +94,7 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
 
       <button onClick={() => publish()}></button>
 
-      <Footer copyrightText={'snek'} copyrightUrl={'https://snek.at'} />
+      <Footer copyrightText={'CC <3 snek'} copyrightUrl={'mailto:admin@tuwien.club'} />
     </>
   )
 }

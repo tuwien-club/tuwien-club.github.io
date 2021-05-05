@@ -1,4 +1,14 @@
 body {
+  background-color: #fff;
+  overflow-y: scroll;
+  min-height: 100vh;
+  background-position: bottom;
+  background-position-x: center;
+  background-repeat: repeat-x;
+  background-size: 60vh;
+  background-image: url('/common/circuit_dots.svg');
+  padding-bottom: 30vh;
+  position: relative;
   * {
     box-sizing: border-box;
   }
