@@ -25,6 +25,8 @@ export const loadPageContent = createAsyncThunk(
         throw new Error('DropAPI fetch failed')
       }
 
+      console.log('loaded')
+
       return data.page
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,

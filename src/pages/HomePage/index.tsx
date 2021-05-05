@@ -18,20 +18,18 @@ type CMSState = RootState['cms']
 
 interface Props extends CMSState {
   publish: () => void
-  loadPage: (id: string) => void
+  loadPage: (id: string) => Promise<any>
   id: string
   name: string
 }
 
 const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
   useEffect(() => {
+    console.log('reload')
     loadPage(id)
   }, [])
   const CMSPageId = `${id}_${name}`
-  const pageContent = pages[CMSPageId].serverContent
-  console.log(pageContent)
-  console.log(pages)
-  console.log(name)
+  const pageContent = pages[CMSPageId]?.serverContent
 
   return (
     <>
@@ -51,7 +49,7 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
           }}
         /> */}
         <CMSRichTextField
-          content={pageContent.body[0].value}
+          content={pageContent?.body[0].value}
           bifrostOptions={{
             pageId: '3',
             pageName: 'HomePage',
@@ -62,7 +60,7 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
           }}
         />
         <CMSTextField
-          content={pageContent.body[1].value}
+          content={pageContent?.body[1].value}
           bifrostOptions={{
             pageId: '3',
             pageName: 'HomePage',
@@ -94,7 +92,10 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
 
       <button onClick={() => publish()}></button>
 
-      <Footer copyrightText={'CC <3 snek'} copyrightUrl={'mailto:admin@tuwien.club'} />
+      <Footer
+        copyrightText={'CC <3 snek'}
+        copyrightUrl={'mailto:admin@tuwien.club'}
+      />
     </>
   )
 }
